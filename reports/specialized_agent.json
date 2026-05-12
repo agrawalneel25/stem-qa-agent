@@ -10,20 +10,39 @@
   "evolution_trace": [
     {
       "skill": "reverse_involution",
-      "matched_training_cases": 1,
-      "true_hits": 1,
-      "false_hits": 0,
-      "accepted": true
-    },
-    {
-      "skill": "sorted_idempotence",
+      "policy": "gated",
       "matched_training_cases": 2,
       "true_hits": 1,
       "false_hits": 0,
       "accepted": true
     },
     {
+      "skill": "reverse_changes_text",
+      "policy": "gated",
+      "matched_training_cases": 2,
+      "true_hits": 1,
+      "false_hits": 1,
+      "accepted": false
+    },
+    {
+      "skill": "sorted_idempotence",
+      "policy": "gated",
+      "matched_training_cases": 2,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "sorted_removes_duplicates",
+      "policy": "gated",
+      "matched_training_cases": 2,
+      "true_hits": 0,
+      "false_hits": 1,
+      "accepted": false
+    },
+    {
       "skill": "clamp_bounds",
+      "policy": "gated",
       "matched_training_cases": 1,
       "true_hits": 1,
       "false_hits": 0,
@@ -31,6 +50,7 @@
     },
     {
       "skill": "slug_shape",
+      "policy": "gated",
       "matched_training_cases": 1,
       "true_hits": 1,
       "false_hits": 0,
@@ -38,6 +58,7 @@
     },
     {
       "skill": "signed_integer_parsing",
+      "policy": "gated",
       "matched_training_cases": 1,
       "true_hits": 1,
       "false_hits": 0,
@@ -45,6 +66,7 @@
     },
     {
       "skill": "dedupe_preserves_order",
+      "policy": "gated",
       "matched_training_cases": 2,
       "true_hits": 1,
       "false_hits": 0,

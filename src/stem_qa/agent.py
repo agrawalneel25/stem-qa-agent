@@ -26,7 +26,7 @@ class StemAgent:
     def generic(cls) -> "StemAgent":
         return cls([])
 
-    def evolve(self, train_cases: list[Case]) -> "StemAgent":
+    def evolve(self, train_cases: list[Case], policy: str = "gated") -> "StemAgent":
         selected: list[Skill] = []
         trace: list[dict[str, object]] = []
         for skill in available_skills():
@@ -36,10 +36,16 @@ class StemAgent:
             results = [self._run_skill(skill, case) for case in relevant]
             true_hits = sum(1 for case, failures in zip(relevant, results) if case.bug_expected and failures)
             false_hits = sum(1 for case, failures in zip(relevant, results) if not case.bug_expected and failures)
-            accepted = true_hits > 0 and false_hits == 0
+            if policy == "gated":
+                accepted = true_hits > 0 and false_hits == 0
+            elif policy == "recall_only":
+                accepted = true_hits > 0
+            else:
+                raise ValueError(f"unknown evolution policy: {policy}")
             trace.append(
                 {
                     "skill": skill.name,
+                    "policy": policy,
                     "matched_training_cases": len(relevant),
                     "true_hits": true_hits,
                     "false_hits": false_hits,

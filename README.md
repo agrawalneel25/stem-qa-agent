@@ -27,6 +27,7 @@ Current held-out evaluation:
 | Agent | Accuracy | Recall | Precision | TP | FP | FN | TN |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Generic baseline | 0.364 | 0.0 | 0 | 0 | 0 | 7 | 4 |
+| Recall-only evolution | 0.818 | 0.857 | 0.857 | 6 | 1 | 1 | 3 |
 | Evolved QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 
 Generated files:
@@ -52,4 +53,7 @@ Generated files:
 - `tests/test_agent.py` - regression tests
 - `reports/writeup.md` - main write-up
 - `reports/autonomy_limits.md` - answer to Task 2
+- `DESIGN.md` - design choices and limits
+
+The recall-only row is the useful comparison. It selects any skill that catches a training bug, even if it also flags clean examples. The gated stem keeps the same held-out recall but removes the false positive by rejecting noisy candidate skills during evolution.
 

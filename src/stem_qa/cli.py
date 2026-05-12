@@ -18,19 +18,23 @@ def main(argv: list[str] | None = None) -> int:
     test = [case for case in cases if case.split == "test"]
 
     baseline = StemAgent.generic()
-    evolved = baseline.evolve(train)
+    recall_only = baseline.evolve(train, policy="recall_only")
+    evolved = baseline.evolve(train, policy="gated")
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     evolved.save(out / "specialized_agent.json")
 
     baseline_results = baseline.evaluate(test)
+    recall_only_results = recall_only.evaluate(test)
     evolved_results = evolved.evaluate(test)
 
     payload = {
         "selected_skills": [skill.name for skill in evolved.skills],
+        "recall_only_skills": [skill.name for skill in recall_only.skills],
         "evolution_trace": evolved.trace,
         "baseline": summarize(baseline_results),
+        "recall_only": summarize(recall_only_results),
         "evolved": summarize(evolved_results),
         "cases": [
             {
@@ -50,8 +54,9 @@ def main(argv: list[str] | None = None) -> int:
 
 def markdown(payload: dict[str, object]) -> str:
     baseline = payload["baseline"]
+    recall_only = payload["recall_only"]
     evolved = payload["evolved"]
-    assert isinstance(baseline, dict) and isinstance(evolved, dict)
+    assert isinstance(baseline, dict) and isinstance(recall_only, dict) and isinstance(evolved, dict)
     lines = [
         "# Stem QA Agent Evaluation",
         "",
@@ -60,6 +65,7 @@ def markdown(payload: dict[str, object]) -> str:
         "| Agent | Accuracy | Recall | Precision | TP | FP | FN | TN |",
         "|---|---:|---:|---:|---:|---:|---:|---:|",
         f"| Generic baseline | {baseline['accuracy']} | {baseline['recall']} | {baseline['precision']} | {baseline['true_positive']} | {baseline['false_positive']} | {baseline['false_negative']} | {baseline['true_negative']} |",
+        f"| Recall-only evolution | {recall_only['accuracy']} | {recall_only['recall']} | {recall_only['precision']} | {recall_only['true_positive']} | {recall_only['false_positive']} | {recall_only['false_negative']} | {recall_only['true_negative']} |",
         f"| Evolved QA agent | {evolved['accuracy']} | {evolved['recall']} | {evolved['precision']} | {evolved['true_positive']} | {evolved['false_positive']} | {evolved['false_negative']} | {evolved['true_negative']} |",
         "",
         "## Findings",

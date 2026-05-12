@@ -5,6 +5,7 @@ Selected skills: reverse_involution, sorted_idempotence, clamp_bounds, slug_shap
 | Agent | Accuracy | Recall | Precision | TP | FP | FN | TN |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Generic baseline | 0.364 | 0.0 | 0 | 0 | 0 | 7 | 4 |
+| Recall-only evolution | 0.818 | 0.857 | 0.857 | 6 | 1 | 1 | 3 |
 | Evolved QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 
 ## Findings
@@ -24,7 +25,9 @@ Selected skills: reverse_involution, sorted_idempotence, clamp_bounds, slug_shap
 ## Evolution Trace
 
 - `reverse_involution`: accepted=True, true_hits=1, false_hits=0
+- `reverse_changes_text`: accepted=False, true_hits=1, false_hits=1
 - `sorted_idempotence`: accepted=True, true_hits=1, false_hits=0
+- `sorted_removes_duplicates`: accepted=False, true_hits=0, false_hits=1
 - `clamp_bounds`: accepted=True, true_hits=1, false_hits=0
 - `slug_shape`: accepted=True, true_hits=1, false_hits=0
 - `signed_integer_parsing`: accepted=True, true_hits=1, false_hits=0

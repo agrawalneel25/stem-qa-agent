@@ -28,13 +28,16 @@ Current held-out result:
 | Agent | Accuracy | Recall | Precision | TP | FP | FN | TN |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Generic baseline | 0.364 | 0.0 | 0 | 0 | 0 | 7 | 4 |
+| Recall-only evolution | 0.818 | 0.857 | 0.857 | 6 | 1 | 1 | 3 |
 | Evolved QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 
-The generic baseline has no active probes, so it only represents "do nothing beyond loading the task class". The evolved agent selected six probes and found six of seven held-out bugs with no false positives. The missed case was `19_median_bug_eval`, where the spec says even-length lists should average the two middle values. The stem had no candidate median skill, so it could not become that kind of checker.
+The generic baseline has no active probes, so it only represents "do nothing beyond loading the task class". I also tested a recall-only variant that accepts any candidate skill that catches a training bug. It found the same six held-out bugs as the gated stem, but it introduced one false positive. The gated agent selected six probes and found six of seven held-out bugs with no false positives.
+
+The missed case was `19_median_bug_eval`, where the spec says even-length lists should average the two middle values. The stem had no candidate median skill, so it could not become that kind of checker.
 
 ## What Surprised Me
 
-The strongest part of the design was not the probe library. It was the rollback rule. Without the false-positive gate, it is easy to select broad probes that look useful on buggy examples but are noisy on clean ones. The small training clean set matters because it teaches the agent what not to become.
+The strongest part of the design was not the probe library. It was the rollback rule. The recall-only ablation selected `reverse_changes_text`, a bad skill that treats a palindrome as suspicious because reversing it does not visibly change the string. The gated version rejected it after it fired on a clean training case. That is the closest piece to the stem-cell analogy: a mutation can start, but the environment can pull it back.
 
 The main failure was coverage. The stem can only specialize into shapes available in its candidate pool. It can select, reject, and compose skills, but it cannot invent a median oracle from nothing. In a larger version, I would add an LLM-backed skill proposal step, then require the same empirical gate before accepting generated probes.
 

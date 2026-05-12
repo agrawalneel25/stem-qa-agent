@@ -7,23 +7,51 @@
     "signed_integer_parsing",
     "dedupe_preserves_order"
   ],
+  "recall_only_skills": [
+    "reverse_involution",
+    "reverse_changes_text",
+    "sorted_idempotence",
+    "clamp_bounds",
+    "slug_shape",
+    "signed_integer_parsing",
+    "dedupe_preserves_order"
+  ],
   "evolution_trace": [
     {
       "skill": "reverse_involution",
-      "matched_training_cases": 1,
-      "true_hits": 1,
-      "false_hits": 0,
-      "accepted": true
-    },
-    {
-      "skill": "sorted_idempotence",
+      "policy": "gated",
       "matched_training_cases": 2,
       "true_hits": 1,
       "false_hits": 0,
       "accepted": true
     },
     {
+      "skill": "reverse_changes_text",
+      "policy": "gated",
+      "matched_training_cases": 2,
+      "true_hits": 1,
+      "false_hits": 1,
+      "accepted": false
+    },
+    {
+      "skill": "sorted_idempotence",
+      "policy": "gated",
+      "matched_training_cases": 2,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "sorted_removes_duplicates",
+      "policy": "gated",
+      "matched_training_cases": 2,
+      "true_hits": 0,
+      "false_hits": 1,
+      "accepted": false
+    },
+    {
       "skill": "clamp_bounds",
+      "policy": "gated",
       "matched_training_cases": 1,
       "true_hits": 1,
       "false_hits": 0,
@@ -31,6 +59,7 @@
     },
     {
       "skill": "slug_shape",
+      "policy": "gated",
       "matched_training_cases": 1,
       "true_hits": 1,
       "false_hits": 0,
@@ -38,6 +67,7 @@
     },
     {
       "skill": "signed_integer_parsing",
+      "policy": "gated",
       "matched_training_cases": 1,
       "true_hits": 1,
       "false_hits": 0,
@@ -45,6 +75,7 @@
     },
     {
       "skill": "dedupe_preserves_order",
+      "policy": "gated",
       "matched_training_cases": 2,
       "true_hits": 1,
       "false_hits": 0,
@@ -60,6 +91,16 @@
     "accuracy": 0.364,
     "recall": 0.0,
     "precision": 0
+  },
+  "recall_only": {
+    "cases": 11,
+    "true_positive": 6,
+    "false_positive": 1,
+    "false_negative": 1,
+    "true_negative": 3,
+    "accuracy": 0.818,
+    "recall": 0.857,
+    "precision": 0.857
   },
   "evolved": {
     "cases": 11,

@@ -19,7 +19,9 @@ class Skill:
 def available_skills() -> list[Skill]:
     return [
         Skill("reverse_involution", "reverse", reverse_involution),
+        Skill("reverse_changes_text", "reverse", reverse_changes_text),
         Skill("sorted_idempotence", "sorted", sorted_idempotence),
+        Skill("sorted_removes_duplicates", "sorted", sorted_removes_duplicates),
         Skill("clamp_bounds", "between min and max", clamp_bounds),
         Skill("slug_shape", "slug", slug_shape),
         Skill("signed_integer_parsing", "integers", signed_integer_parsing),
@@ -40,6 +42,12 @@ def reverse_involution(module: object, function: str) -> list[str]:
     return failures
 
 
+def reverse_changes_text(module: object, function: str) -> list[str]:
+    fn = getattr(module, function)
+    result = fn("racecar")
+    return ["palindrome did not visibly change"] if result == "racecar" else []
+
+
 def sorted_idempotence(module: object, function: str) -> list[str]:
     fn = getattr(module, function)
     failures = []
@@ -51,6 +59,12 @@ def sorted_idempotence(module: object, function: str) -> list[str]:
         if fn(result) != result:
             failures.append(f"sort idempotence failed for {sample!r}")
     return failures
+
+
+def sorted_removes_duplicates(module: object, function: str) -> list[str]:
+    fn = getattr(module, function)
+    result = fn([3, 1, 2, 1])
+    return [] if len(result) < 4 else ["duplicates were preserved"]
 
 
 def clamp_bounds(module: object, function: str) -> list[str]:
