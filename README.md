@@ -10,6 +10,7 @@ The stem starts with no QA skills. It reads training examples, tries candidate p
 python -m pip install -e .
 python -m unittest discover -s tests
 python -m stem_qa --cases benchmark\cases --out reports
+python scripts\split_sensitivity.py
 ```
 
 On Linux/macOS:
@@ -18,6 +19,7 @@ On Linux/macOS:
 python -m pip install -e .
 python -m unittest discover -s tests
 python -m stem_qa --cases benchmark/cases --out reports
+python scripts/split_sensitivity.py
 ```
 
 ## Result
@@ -34,6 +36,7 @@ Generated files:
 
 - `reports/evaluation.md`
 - `reports/evaluation.json`
+- `reports/split_sensitivity.md`
 - `reports/specialized_agent.json`
 
 ## How It Maps To The Prompt
@@ -56,4 +59,3 @@ Generated files:
 - `DESIGN.md` - design choices and limits
 
 The recall-only row is the useful comparison. It selects any skill that catches a training bug, even if it also flags clean examples. The gated stem keeps the same held-out recall but removes the false positive by rejecting noisy candidate skills during evolution.
-

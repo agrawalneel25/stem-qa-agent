@@ -21,4 +21,5 @@ jobs:
         run: python -m unittest discover -s tests
       - name: Run benchmark
         run: python -m stem_qa --cases benchmark/cases --out reports
-
+      - name: Run split sensitivity
+        run: python scripts/split_sensitivity.py

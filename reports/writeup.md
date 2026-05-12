@@ -35,6 +35,8 @@ The generic baseline has no active probes, so it only represents "do nothing bey
 
 The missed case was `19_median_bug_eval`, where the spec says even-length lists should average the two middle values. The stem had no candidate median skill, so it could not become that kind of checker.
 
+I also ran ten stratified train/test splits with `scripts/split_sensitivity.py`. The mean gated recall was 0.660 with no false positives. The recall-only policy averaged 0.900 false positives. The exact numbers are in `reports/split_sensitivity.md`. This is still a small benchmark, but it checks that the rollback rule is not only helping one hand-picked split.
+
 ## What Surprised Me
 
 The strongest part of the design was not the probe library. It was the rollback rule. The recall-only ablation selected `reverse_changes_text`, a bad skill that treats a palindrome as suspicious because reversing it does not visibly change the string. The gated version rejected it after it fired on a clean training case. That is the closest piece to the stem-cell analogy: a mutation can start, but the environment can pull it back.

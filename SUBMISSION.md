@@ -32,9 +32,10 @@ Run locally:
 python -m pip install -e .
 python -m unittest discover -s tests
 python -m stem_qa --cases benchmark\cases --out reports
+python scripts\split_sensitivity.py
 ```
 
-GitHub Actions runs the tests and benchmark.
+GitHub Actions runs the tests, benchmark, and split-sensitivity check.
 
 ## Task #2 - Solution
 
@@ -43,4 +44,3 @@ My answer is in:
 `reports/autonomy_limits.md`
 
 Short version: the blockers are underspecified tasks, long-horizon error compounding, missing social/product context, weak verification for non-testable work, and unsafe tool permissions. I argue for narrower agents with explicit operating envelopes instead of one fully autonomous software engineer.
-

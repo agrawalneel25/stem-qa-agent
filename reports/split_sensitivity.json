@@ -1,0 +1,327 @@
+[
+  {
+    "seed": 0,
+    "train_cases": 12,
+    "test_cases": 8,
+    "recall_only": {
+      "cases": 8,
+      "true_positive": 3,
+      "false_positive": 1,
+      "false_negative": 2,
+      "true_negative": 2,
+      "accuracy": 0.625,
+      "recall": 0.6,
+      "precision": 0.75
+    },
+    "gated": {
+      "cases": 8,
+      "true_positive": 3,
+      "false_positive": 0,
+      "false_negative": 2,
+      "true_negative": 3,
+      "accuracy": 0.75,
+      "recall": 0.6,
+      "precision": 1.0
+    },
+    "accepted_skills": [
+      "reverse_involution",
+      "sorted_idempotence",
+      "clamp_bounds",
+      "slug_shape",
+      "signed_integer_parsing"
+    ]
+  },
+  {
+    "seed": 1,
+    "train_cases": 12,
+    "test_cases": 8,
+    "recall_only": {
+      "cases": 8,
+      "true_positive": 4,
+      "false_positive": 1,
+      "false_negative": 1,
+      "true_negative": 2,
+      "accuracy": 0.75,
+      "recall": 0.8,
+      "precision": 0.8
+    },
+    "gated": {
+      "cases": 8,
+      "true_positive": 4,
+      "false_positive": 0,
+      "false_negative": 1,
+      "true_negative": 3,
+      "accuracy": 0.875,
+      "recall": 0.8,
+      "precision": 1.0
+    },
+    "accepted_skills": [
+      "reverse_involution",
+      "sorted_idempotence",
+      "clamp_bounds",
+      "slug_shape",
+      "signed_integer_parsing",
+      "dedupe_preserves_order"
+    ]
+  },
+  {
+    "seed": 2,
+    "train_cases": 12,
+    "test_cases": 8,
+    "recall_only": {
+      "cases": 8,
+      "true_positive": 4,
+      "false_positive": 1,
+      "false_negative": 1,
+      "true_negative": 2,
+      "accuracy": 0.75,
+      "recall": 0.8,
+      "precision": 0.8
+    },
+    "gated": {
+      "cases": 8,
+      "true_positive": 4,
+      "false_positive": 0,
+      "false_negative": 1,
+      "true_negative": 3,
+      "accuracy": 0.875,
+      "recall": 0.8,
+      "precision": 1.0
+    },
+    "accepted_skills": [
+      "reverse_involution",
+      "sorted_idempotence",
+      "clamp_bounds",
+      "slug_shape",
+      "signed_integer_parsing",
+      "dedupe_preserves_order"
+    ]
+  },
+  {
+    "seed": 3,
+    "train_cases": 12,
+    "test_cases": 8,
+    "recall_only": {
+      "cases": 8,
+      "true_positive": 2,
+      "false_positive": 0,
+      "false_negative": 3,
+      "true_negative": 3,
+      "accuracy": 0.625,
+      "recall": 0.4,
+      "precision": 1.0
+    },
+    "gated": {
+      "cases": 8,
+      "true_positive": 2,
+      "false_positive": 0,
+      "false_negative": 3,
+      "true_negative": 3,
+      "accuracy": 0.625,
+      "recall": 0.4,
+      "precision": 1.0
+    },
+    "accepted_skills": [
+      "sorted_idempotence",
+      "clamp_bounds",
+      "slug_shape",
+      "signed_integer_parsing",
+      "dedupe_preserves_order"
+    ]
+  },
+  {
+    "seed": 4,
+    "train_cases": 12,
+    "test_cases": 8,
+    "recall_only": {
+      "cases": 8,
+      "true_positive": 2,
+      "false_positive": 1,
+      "false_negative": 3,
+      "true_negative": 2,
+      "accuracy": 0.5,
+      "recall": 0.4,
+      "precision": 0.667
+    },
+    "gated": {
+      "cases": 8,
+      "true_positive": 2,
+      "false_positive": 0,
+      "false_negative": 3,
+      "true_negative": 3,
+      "accuracy": 0.625,
+      "recall": 0.4,
+      "precision": 1.0
+    },
+    "accepted_skills": [
+      "reverse_involution",
+      "sorted_idempotence",
+      "clamp_bounds",
+      "slug_shape",
+      "signed_integer_parsing"
+    ]
+  },
+  {
+    "seed": 5,
+    "train_cases": 12,
+    "test_cases": 8,
+    "recall_only": {
+      "cases": 8,
+      "true_positive": 2,
+      "false_positive": 1,
+      "false_negative": 3,
+      "true_negative": 2,
+      "accuracy": 0.5,
+      "recall": 0.4,
+      "precision": 0.667
+    },
+    "gated": {
+      "cases": 8,
+      "true_positive": 2,
+      "false_positive": 0,
+      "false_negative": 3,
+      "true_negative": 3,
+      "accuracy": 0.625,
+      "recall": 0.4,
+      "precision": 1.0
+    },
+    "accepted_skills": [
+      "reverse_involution",
+      "sorted_idempotence",
+      "clamp_bounds",
+      "slug_shape",
+      "dedupe_preserves_order"
+    ]
+  },
+  {
+    "seed": 6,
+    "train_cases": 12,
+    "test_cases": 8,
+    "recall_only": {
+      "cases": 8,
+      "true_positive": 5,
+      "false_positive": 1,
+      "false_negative": 0,
+      "true_negative": 2,
+      "accuracy": 0.875,
+      "recall": 1.0,
+      "precision": 0.833
+    },
+    "gated": {
+      "cases": 8,
+      "true_positive": 5,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 3,
+      "accuracy": 1.0,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "accepted_skills": [
+      "reverse_involution",
+      "sorted_idempotence",
+      "clamp_bounds",
+      "slug_shape",
+      "signed_integer_parsing",
+      "dedupe_preserves_order"
+    ]
+  },
+  {
+    "seed": 7,
+    "train_cases": 12,
+    "test_cases": 8,
+    "recall_only": {
+      "cases": 8,
+      "true_positive": 4,
+      "false_positive": 1,
+      "false_negative": 1,
+      "true_negative": 2,
+      "accuracy": 0.75,
+      "recall": 0.8,
+      "precision": 0.8
+    },
+    "gated": {
+      "cases": 8,
+      "true_positive": 4,
+      "false_positive": 0,
+      "false_negative": 1,
+      "true_negative": 3,
+      "accuracy": 0.875,
+      "recall": 0.8,
+      "precision": 1.0
+    },
+    "accepted_skills": [
+      "reverse_involution",
+      "sorted_idempotence",
+      "clamp_bounds",
+      "slug_shape",
+      "signed_integer_parsing",
+      "dedupe_preserves_order"
+    ]
+  },
+  {
+    "seed": 8,
+    "train_cases": 12,
+    "test_cases": 8,
+    "recall_only": {
+      "cases": 8,
+      "true_positive": 5,
+      "false_positive": 1,
+      "false_negative": 0,
+      "true_negative": 2,
+      "accuracy": 0.875,
+      "recall": 1.0,
+      "precision": 0.833
+    },
+    "gated": {
+      "cases": 8,
+      "true_positive": 5,
+      "false_positive": 0,
+      "false_negative": 0,
+      "true_negative": 3,
+      "accuracy": 1.0,
+      "recall": 1.0,
+      "precision": 1.0
+    },
+    "accepted_skills": [
+      "reverse_involution",
+      "sorted_idempotence",
+      "clamp_bounds",
+      "slug_shape",
+      "signed_integer_parsing",
+      "dedupe_preserves_order"
+    ]
+  },
+  {
+    "seed": 9,
+    "train_cases": 12,
+    "test_cases": 8,
+    "recall_only": {
+      "cases": 8,
+      "true_positive": 2,
+      "false_positive": 1,
+      "false_negative": 3,
+      "true_negative": 2,
+      "accuracy": 0.5,
+      "recall": 0.4,
+      "precision": 0.667
+    },
+    "gated": {
+      "cases": 8,
+      "true_positive": 2,
+      "false_positive": 0,
+      "false_negative": 3,
+      "true_negative": 3,
+      "accuracy": 0.625,
+      "recall": 0.4,
+      "precision": 1.0
+    },
+    "accepted_skills": [
+      "reverse_involution",
+      "sorted_idempotence",
+      "clamp_bounds",
+      "slug_shape",
+      "dedupe_preserves_order"
+    ]
+  }
+]
