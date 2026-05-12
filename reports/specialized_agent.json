@@ -1,0 +1,54 @@
+{
+  "skills": [
+    "reverse_involution",
+    "sorted_idempotence",
+    "clamp_bounds",
+    "slug_shape",
+    "signed_integer_parsing",
+    "dedupe_preserves_order"
+  ],
+  "evolution_trace": [
+    {
+      "skill": "reverse_involution",
+      "matched_training_cases": 1,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "sorted_idempotence",
+      "matched_training_cases": 2,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "clamp_bounds",
+      "matched_training_cases": 1,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "slug_shape",
+      "matched_training_cases": 1,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "signed_integer_parsing",
+      "matched_training_cases": 1,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "dedupe_preserves_order",
+      "matched_training_cases": 2,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    }
+  ]
+}

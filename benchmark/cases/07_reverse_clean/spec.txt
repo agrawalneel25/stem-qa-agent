@@ -1,0 +1,1 @@
+Return the reverse of the input string. Reversing twice should recover the original string.

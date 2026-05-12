@@ -1,0 +1,156 @@
+{
+  "selected_skills": [
+    "reverse_involution",
+    "sorted_idempotence",
+    "clamp_bounds",
+    "slug_shape",
+    "signed_integer_parsing",
+    "dedupe_preserves_order"
+  ],
+  "evolution_trace": [
+    {
+      "skill": "reverse_involution",
+      "matched_training_cases": 1,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "sorted_idempotence",
+      "matched_training_cases": 2,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "clamp_bounds",
+      "matched_training_cases": 1,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "slug_shape",
+      "matched_training_cases": 1,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "signed_integer_parsing",
+      "matched_training_cases": 1,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    },
+    {
+      "skill": "dedupe_preserves_order",
+      "matched_training_cases": 2,
+      "true_hits": 1,
+      "false_hits": 0,
+      "accepted": true
+    }
+  ],
+  "baseline": {
+    "cases": 11,
+    "true_positive": 0,
+    "false_positive": 0,
+    "false_negative": 7,
+    "true_negative": 4,
+    "accuracy": 0.364,
+    "recall": 0.0,
+    "precision": 0
+  },
+  "evolved": {
+    "cases": 11,
+    "true_positive": 6,
+    "false_positive": 0,
+    "false_negative": 1,
+    "true_negative": 4,
+    "accuracy": 0.909,
+    "recall": 0.857,
+    "precision": 1.0
+  },
+  "cases": [
+    {
+      "case_id": "07_reverse_clean",
+      "bug_expected": false,
+      "detected": false,
+      "findings": []
+    },
+    {
+      "case_id": "09_clamp_clean",
+      "bug_expected": false,
+      "detected": false,
+      "findings": []
+    },
+    {
+      "case_id": "10_slug_clean",
+      "bug_expected": false,
+      "detected": false,
+      "findings": []
+    },
+    {
+      "case_id": "12_parse_clean",
+      "bug_expected": false,
+      "detected": false,
+      "findings": []
+    },
+    {
+      "case_id": "13_reverse_bug_eval",
+      "bug_expected": true,
+      "detected": true,
+      "findings": [
+        "reverse_involution: reverse involution failed for ' abc '"
+      ]
+    },
+    {
+      "case_id": "14_sort_bug_eval",
+      "bug_expected": true,
+      "detected": true,
+      "findings": [
+        "sorted_idempotence: sort output mismatch for [3, 1, 2, 1]: [1, 2, 3]",
+        "sorted_idempotence: sort output mismatch for [5, 5, 4]: [4, 5]"
+      ]
+    },
+    {
+      "case_id": "15_clamp_bug_eval",
+      "bug_expected": true,
+      "detected": true,
+      "findings": [
+        "clamp_bounds: clamp returned 11 outside [0, 10]"
+      ]
+    },
+    {
+      "case_id": "16_slug_bug_eval",
+      "bug_expected": true,
+      "detected": true,
+      "findings": [
+        "slug_shape: slug is not lowercase",
+        "slug_shape: slug kept separator punctuation"
+      ]
+    },
+    {
+      "case_id": "17_dedupe_bug_eval",
+      "bug_expected": true,
+      "detected": true,
+      "findings": [
+        "dedupe_preserves_order: dedupe order mismatch: ['a', 'b', 'c']"
+      ]
+    },
+    {
+      "case_id": "18_parse_bug_eval",
+      "bug_expected": true,
+      "detected": true,
+      "findings": [
+        "signed_integer_parsing: integer parse mismatch: [2, 17, 0]"
+      ]
+    },
+    {
+      "case_id": "19_median_bug_eval",
+      "bug_expected": true,
+      "detected": false,
+      "findings": []
+    }
+  ]
+}

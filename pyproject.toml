@@ -1,0 +1,16 @@
+[project]
+name = "stem-qa-agent"
+version = "0.1.0"
+description = "A small stem agent that evolves into a Python QA agent."
+requires-python = ">=3.10"
+readme = "README.md"
+
+[project.scripts]
+stem-qa = "stem_qa.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

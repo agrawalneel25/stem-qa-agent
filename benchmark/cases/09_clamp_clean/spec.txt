@@ -1,0 +1,1 @@
+Clamp a value between min and max, including both endpoints.
