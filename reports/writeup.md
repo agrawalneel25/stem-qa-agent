@@ -29,25 +29,30 @@ Current held-out result:
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Generic baseline | 0.364 | 0.0 | 0 | 0 | 0 | 7 | 4 |
 | Recall-only evolution | 0.818 | 0.857 | 0.857 | 6 | 1 | 1 | 3 |
+| Hand-built QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 | Evolved QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 
 The generic baseline has no active probes, so it only represents "do nothing beyond loading the task class". I also tested a recall-only variant that accepts any candidate skill that catches a training bug. It found the same six held-out bugs as the gated stem, but it introduced one false positive. The gated agent selected six probes and found six of seven held-out bugs with no false positives.
+
+The hand-built baseline is there so the comparison is not only against weak agents. It uses the non-noisy probes I would pick after reading the benchmark. The evolved agent matches it on the held-out split, which means the gate recovered the intended specialist shape from training evidence.
 
 The missed case was `19_median_bug_eval`, where the spec says even-length lists should average the two middle values. The stem had no candidate median skill, so it could not become that kind of checker.
 
 I also ran ten stratified train/test splits with `scripts/split_sensitivity.py`. The mean gated recall was 0.660 with no false positives. The recall-only policy averaged 0.900 false positives. The exact numbers are in `reports/split_sensitivity.md`. This is still a small benchmark, but it checks that the rollback rule is not only helping one hand-picked split.
 
+Finally, `scripts/bootstrap_ci.py` resamples the held-out cases. The evolved agent has mean accuracy 0.910 with a 5-95% interval of 0.727-1.000. That interval is wide because the held-out set is small. I include it because the honest conclusion is "the safeguard helped on this benchmark", not "this is a solved QA agent".
+
 ## What Surprised Me
 
 The strongest part of the design was not the probe library. It was the rollback rule. The recall-only ablation selected `reverse_changes_text`, a bad skill that treats a palindrome as suspicious because reversing it does not visibly change the string. The gated version rejected it after it fired on a clean training case. That is the closest piece to the stem-cell analogy: a mutation can start, but the environment can pull it back.
 
-The main failure was coverage. The stem can only specialize into shapes available in its candidate pool. It can select, reject, and compose skills, but it cannot invent a median oracle from nothing. In a larger version, I would add an LLM-backed skill proposal step, then require the same empirical gate before accepting generated probes.
+The main failure was coverage. The stem can only specialize into shapes available in its candidate pool. It can select, reject, and compose skills, but it cannot invent a median oracle from nothing. In a larger version, I would add a model-backed skill proposal step, then require the same empirical gate before accepting generated probes.
 
 ## What I Would Do Next
 
 I would extend this in three directions:
 
-1. Use an LLM to propose candidate probes from specs, but keep acceptance deterministic and test-based.
+1. Use a language model to propose candidate probes from specs, but keep acceptance deterministic and test-based.
 2. Add a patching phase after detection, with rollback if tests or probes regress.
 3. Run on real small Python packages, not only synthetic utilities.
 

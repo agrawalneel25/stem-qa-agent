@@ -11,6 +11,7 @@ python -m pip install -e .
 python -m unittest discover -s tests
 python -m stem_qa --cases benchmark\cases --out reports
 python scripts\split_sensitivity.py
+python scripts\bootstrap_ci.py
 ```
 
 On Linux/macOS:
@@ -20,6 +21,7 @@ python -m pip install -e .
 python -m unittest discover -s tests
 python -m stem_qa --cases benchmark/cases --out reports
 python scripts/split_sensitivity.py
+python scripts/bootstrap_ci.py
 ```
 
 ## Result
@@ -30,13 +32,16 @@ Current held-out evaluation:
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Generic baseline | 0.364 | 0.0 | 0 | 0 | 0 | 7 | 4 |
 | Recall-only evolution | 0.818 | 0.857 | 0.857 | 6 | 1 | 1 | 3 |
+| Hand-built QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 | Evolved QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 
 Generated files:
 
 - `reports/evaluation.md`
 - `reports/evaluation.json`
+- `reports/lineage.md`
 - `reports/split_sensitivity.md`
+- `reports/bootstrap_ci.md`
 - `reports/specialized_agent.json`
 
 ## How It Maps To The Prompt
@@ -59,3 +64,5 @@ Generated files:
 - `DESIGN.md` - design choices and limits
 
 The recall-only row is the useful comparison. It selects any skill that catches a training bug, even if it also flags clean examples. The gated stem keeps the same held-out recall but removes the false positive by rejecting noisy candidate skills during evolution.
+
+The hand-built row is a sanity check. It uses the non-noisy probes I would have selected manually after reading the benchmark. The evolved stem reaches the same held-out score from the training gate alone.

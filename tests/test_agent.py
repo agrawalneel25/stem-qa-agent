@@ -56,7 +56,9 @@ class StemAgentTest(unittest.TestCase):
             self.assertEqual(payload["evolved"]["true_positive"], 6)
             self.assertEqual(payload["evolved"]["false_negative"], 1)
             self.assertIn("recall_only", payload)
+            self.assertIn("hand_built", payload)
             self.assertTrue((Path(directory) / "evaluation.md").exists())
+            self.assertTrue((Path(directory) / "lineage.md").exists())
 
 
 if __name__ == "__main__":

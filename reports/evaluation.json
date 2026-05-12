@@ -16,6 +16,14 @@
     "signed_integer_parsing",
     "dedupe_preserves_order"
   ],
+  "hand_built_skills": [
+    "reverse_involution",
+    "sorted_idempotence",
+    "clamp_bounds",
+    "slug_shape",
+    "signed_integer_parsing",
+    "dedupe_preserves_order"
+  ],
   "evolution_trace": [
     {
       "skill": "reverse_involution",
@@ -101,6 +109,16 @@
     "accuracy": 0.818,
     "recall": 0.857,
     "precision": 0.857
+  },
+  "hand_built": {
+    "cases": 11,
+    "true_positive": 6,
+    "false_positive": 0,
+    "false_negative": 1,
+    "true_negative": 4,
+    "accuracy": 0.909,
+    "recall": 0.857,
+    "precision": 1.0
   },
   "evolved": {
     "cases": 11,

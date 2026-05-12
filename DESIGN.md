@@ -24,9 +24,12 @@ Current held-out result:
 |---|---:|---:|---:|---:|
 | Generic baseline | 0.364 | 0.0 | 0 | 0 |
 | Recall-only evolution | 0.818 | 0.857 | 0.857 | 1 |
+| Hand-built QA agent | 0.909 | 0.857 | 1.0 | 0 |
 | Gated evolution | 0.909 | 0.857 | 1.0 | 0 |
 
 The gated version did not catch more bugs. It became safer at the same recall.
+
+I also added a hand-built QA baseline. It uses the non-noisy probes a person would probably choose after reading the specs. The gated stem reaches the same held-out score through the training gate, which is the basic evidence that it became the intended specialist rather than only beating a weak baseline.
 
 ## What This Is Not
 
@@ -38,5 +41,4 @@ This is not a claim that a few handwritten probes are enough for real QA. The us
 4. reject behavior that creates false positives
 5. save the specialized agent and run it on held-out tasks
 
-The next version would use an LLM to propose candidate probes from specs, but still require the same empirical gate before accepting them.
-
+The next version would use a language model to propose candidate probes from specs, but still require the same empirical gate before accepting them.

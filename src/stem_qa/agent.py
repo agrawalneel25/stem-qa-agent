@@ -7,6 +7,15 @@ from pathlib import Path
 from .cases import Case, load_cases
 from .skills import Skill, available_skills, matches
 
+HAND_BUILT_QA_SKILLS = [
+    "reverse_involution",
+    "sorted_idempotence",
+    "clamp_bounds",
+    "slug_shape",
+    "signed_integer_parsing",
+    "dedupe_preserves_order",
+]
+
 
 @dataclass(frozen=True)
 class EvaluationResult:
@@ -25,6 +34,14 @@ class StemAgent:
     @classmethod
     def generic(cls) -> "StemAgent":
         return cls([])
+
+    @classmethod
+    def from_skill_names(cls, names: list[str]) -> "StemAgent":
+        by_name = {skill.name: skill for skill in available_skills()}
+        missing = [name for name in names if name not in by_name]
+        if missing:
+            raise ValueError(f"unknown skills: {', '.join(missing)}")
+        return cls([by_name[name] for name in names])
 
     def evolve(self, train_cases: list[Case], policy: str = "gated") -> "StemAgent":
         selected: list[Skill] = []

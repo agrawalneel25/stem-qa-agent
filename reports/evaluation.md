@@ -6,6 +6,7 @@ Selected skills: reverse_involution, sorted_idempotence, clamp_bounds, slug_shap
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Generic baseline | 0.364 | 0.0 | 0 | 0 | 0 | 7 | 4 |
 | Recall-only evolution | 0.818 | 0.857 | 0.857 | 6 | 1 | 1 | 3 |
+| Hand-built QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 | Evolved QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 
 ## Findings

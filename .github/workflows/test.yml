@@ -23,3 +23,5 @@ jobs:
         run: python -m stem_qa --cases benchmark/cases --out reports
       - name: Run split sensitivity
         run: python scripts/split_sensitivity.py
+      - name: Run bootstrap intervals
+        run: python scripts/bootstrap_ci.py

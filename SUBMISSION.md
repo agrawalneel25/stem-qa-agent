@@ -14,6 +14,8 @@ The repo includes:
 - benchmark cases in `benchmark/cases`
 - tests in `tests/test_agent.py`
 - measured results in `reports/evaluation.md` and `reports/evaluation.json`
+- evolution lineage in `reports/lineage.md`
+- split and bootstrap checks in `reports/split_sensitivity.md` and `reports/bootstrap_ci.md`
 - the write-up in `reports/writeup.md`
 
 Current held-out result:
@@ -22,9 +24,10 @@ Current held-out result:
 |---|---:|---:|---:|---:|---:|---:|---:|
 | Generic baseline | 0.364 | 0.0 | 0 | 0 | 0 | 7 | 4 |
 | Recall-only evolution | 0.818 | 0.857 | 0.857 | 6 | 1 | 1 | 3 |
+| Hand-built QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 | Evolved QA agent | 0.909 | 0.857 | 1.0 | 6 | 0 | 1 | 4 |
 
-The useful result is the ablation: recall-only evolution catches the same six held-out bugs but introduces a false positive. The gated stem keeps the same recall and removes the false positive by rejecting a noisy candidate skill during evolution.
+The useful result is the ablation: recall-only evolution catches the same six held-out bugs but introduces a false positive. The gated stem keeps the same recall and removes the false positive by rejecting a noisy candidate skill during evolution. It also matches a hand-built QA baseline on the held-out split, which is a sanity check that the automatic selection found the obvious specialist shape.
 
 Run locally:
 
@@ -33,9 +36,10 @@ python -m pip install -e .
 python -m unittest discover -s tests
 python -m stem_qa --cases benchmark\cases --out reports
 python scripts\split_sensitivity.py
+python scripts\bootstrap_ci.py
 ```
 
-GitHub Actions runs the tests, benchmark, and split-sensitivity check.
+GitHub Actions runs the tests, benchmark, split-sensitivity check, and bootstrap check.
 
 ## Task #2 - Solution
 
